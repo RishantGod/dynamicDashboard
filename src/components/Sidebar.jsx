@@ -14,7 +14,6 @@ const dashboards = [
         label: 'Student Population',
         icon: FaUserGraduate,
         color: '#8884d8', // purple
-        selected: true,
     },
     {
         key: 'finance',
@@ -36,7 +35,7 @@ const dashboards = [
     },
 ];
 
-function Sidebar({ onPushToMain }) {
+function Sidebar({ onPushToMain, currentDashboard, onDashboardChange }) {
     return (
         <nav style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <ul style={{
@@ -51,30 +50,31 @@ function Sidebar({ onPushToMain }) {
                 {dashboards.map(dash => (
                     <li key={dash.key} style={{ display: 'flex', justifyContent: 'center' }}>
                         <button
-                            className={`sidebar-icon-btn sidebar-icon-btn-${dash.key}${dash.selected ? ' selected' : ''}`}
+                            className={`sidebar-icon-btn sidebar-icon-btn-${dash.key}${dash.key === currentDashboard ? ' selected' : ''}`}
                             style={{
                                 width: '100%',
                                 height: 48,
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'flex-start',
-                                background: dash.selected ? 'rgba(136,132,216,0.12)' : 'transparent',
-                                color: dash.selected ? dash.color : '#b0bed9',
+                                background: dash.key === currentDashboard ? 'rgba(136,132,216,0.12)' : 'transparent',
+                                color: dash.key === currentDashboard ? dash.color : '#b0bed9',
                                 border: 'none',
                                 borderRadius: '8px',
                                 fontSize: 24,
-                                cursor: dash.selected ? 'default' : 'pointer',
-                                boxShadow: dash.selected ? '0 2px 8px rgba(136,132,216,0.08)' : 'none',
+                                cursor: dash.key === currentDashboard ? 'default' : 'pointer',
+                                boxShadow: dash.key === currentDashboard ? '0 2px 8px rgba(136,132,216,0.08)' : 'none',
                                 transition: 'background 0.2s, color 0.2s',
                                 position: 'relative',
                                 paddingLeft: 18,
                                 gap: 14,
                             }}
                             title={dash.label}
-                            disabled={dash.selected}
+                            disabled={dash.key === currentDashboard}
+                            onClick={() => onDashboardChange && onDashboardChange(dash.key)}
                         >
-                            {React.createElement(dash.icon, { size: 24, color: dash.selected ? dash.color : 'inherit' })}
-                            <span className="sidebar-label" style={{ fontSize: 16, fontWeight: dash.selected ? 600 : 400, color: 'inherit', transition: 'color 0.2s' }}>{dash.label}</span>
+                            {React.createElement(dash.icon, { size: 24, color: dash.key === currentDashboard ? dash.color : 'inherit' })}
+                            <span className="sidebar-label" style={{ fontSize: 16, fontWeight: dash.key === currentDashboard ? 600 : 400, color: 'inherit', transition: 'color 0.2s' }}>{dash.label}</span>
                         </button>
                     </li>
                 ))}

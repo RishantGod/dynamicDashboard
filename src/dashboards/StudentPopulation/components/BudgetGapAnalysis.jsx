@@ -88,7 +88,8 @@ export default function BudgetGapAnalysis({ growthRate = 0, population = 10000 }
             .attr('y', d => yLeft(d.requiredBudget))
             .attr('width', 16)
             .attr('height', d => height - yLeft(d.requiredBudget))
-            .attr('fill', '#ef4444')
+            .attr('fill', '#D1D5DA')
+            .attr('stroke', '#9ca3af')
             .attr('opacity', 0.7)
             .attr('rx', 2);
 
