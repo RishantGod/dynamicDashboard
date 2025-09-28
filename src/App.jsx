@@ -2,6 +2,10 @@ import { useState } from 'react';
 import './App.css';
 import StudentDashboard from './dashboards/StudentPopulation/StudentDashboard';
 import PVSolarDashboard from './dashboards/PVSolar/PVSolarDashboard';
+import WasteDashboard from './dashboards/Waste/WasteDashboard';
+import WaterDashboard from './dashboards/Water/WaterDashboard';
+import ElectricityDashboard from './dashboards/Electricity/ElectricityDashboard';
+import NaturalGasDashboard from './dashboards/NaturalGas/NaturalGasDashboard';
 import Sidebar from './components/Sidebar';
 
 function App() {
@@ -22,6 +26,14 @@ function App() {
         return <StudentDashboard />;
       case 'solar':
         return <PVSolarDashboard />;
+      case 'waste':
+        return <WasteDashboard />;
+      case 'water':
+        return <WaterDashboard />;
+      case 'electricity':
+        return <ElectricityDashboard />;
+      case 'naturalgas':
+        return <NaturalGasDashboard />;
       case 'main':
       case 'finance':
       case 'travel':

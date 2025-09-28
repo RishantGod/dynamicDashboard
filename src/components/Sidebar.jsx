@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTachometerAlt, FaUserGraduate, FaMoneyBillWave, FaSolarPanel, FaPlaneDeparture, FaArrowCircleUp } from 'react-icons/fa';
+import { FaTachometerAlt, FaUserGraduate, FaMoneyBillWave, FaSolarPanel, FaPlaneDeparture, FaRecycle, FaTint, FaBolt, FaFire, FaArrowCircleUp } from 'react-icons/fa';
 
 // Assign a unique color to each dashboard
 const dashboards = [
@@ -26,6 +26,30 @@ const dashboards = [
         label: 'PV Solar',
         icon: FaSolarPanel,
         color: '#f9ca24', // yellow
+    },
+    {
+        key: 'waste',
+        label: 'Waste Management',
+        icon: FaRecycle,
+        color: '#27ae60', // green
+    },
+    {
+        key: 'water',
+        label: 'Water Management',
+        icon: FaTint,
+        color: '#3498db', // light blue
+    },
+    {
+        key: 'electricity',
+        label: 'Electricity Management',
+        icon: FaBolt,
+        color: '#e74c3c', // orange power
+    },
+    {
+        key: 'naturalgas',
+        label: 'Natural Gas & Heating',
+        icon: FaFire,
+        color: '#17a2b8', // deep teal
     },
     {
         key: 'travel',

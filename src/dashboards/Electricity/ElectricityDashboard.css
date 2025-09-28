@@ -1,0 +1,349 @@
+/* Electricity Dashboard Layout */
+.electricity-dashboard {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* 9 columns total */
+    grid-template-rows: auto minmax(120px, 1fr) minmax(120px, 1fr) minmax(300px, 2fr); /* auto height for title */
+    grid-template-areas: 
+        "title title title title title title title title title"
+        "controls controls controls ban-total-electricity ban-total-electricity ban-carbon-emissions ban-carbon-emissions ban-cost ban-cost"
+        "controls controls controls ban-renewable-share ban-renewable-share ban-electricity-per-student ban-electricity-per-student ban-peak-demand-reduction ban-peak-demand-reduction"
+        "electricity-composition electricity-composition electricity-roi electricity-roi electricity-roi electricity-scenario electricity-scenario electricity-scenario electricity-scenario";
+    gap: 1.2rem;
+    padding: 1.5rem;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.electricity-dashboard-title {
+    grid-area: title;
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 0;
+    align-self: center;
+    color: #e74c3c !important;
+}
+
+.electricity-controls {
+    grid-area: controls;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(231,76,60,0.08);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.electricity-dashboard .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.electricity-dashboard .control-group:last-child {
+    flex: 1;
+    min-height: 0;
+}
+
+.electricity-dashboard .control-group label {
+    font-weight: 600;
+    color: #e74c3c;
+    font-size: 1rem;
+}
+
+.electricity-dashboard .control-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.electricity-dashboard .control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e74c3c;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(231,76,60,0.3);
+}
+
+.electricity-dashboard .control-group span {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.1rem;
+    text-align: center;
+    background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 6px;
+}
+
+/* Enhanced slider container */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.3rem;
+    padding: 0 0.1rem;
+}
+
+.electricity-dashboard .control-group .slider-label-min,
+.electricity-dashboard .control-group .slider-label-max {
+    font-weight: 500 !important;
+    color: #c0392b !important;
+    font-size: 0.9rem !important;
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    text-align: center;
+    font-style: italic;
+    opacity: 0.7;
+    border-radius: 0 !important;
+}
+
+.electricity-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #ddd;
+  appearance: none;
+  outline: none;
+}
+
+.electricity-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e74c3c;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+}
+
+.electricity-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #e74c3c;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+}
+
+/* Intervention Toggle Buttons */
+.electricity-dashboard .intervention-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.electricity-dashboard .intervention-toggle {
+  padding: 6px 10px;
+  border: 2px solid #e74c3c;
+  background: transparent;
+  color: #e74c3c;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
+  text-align: center;
+}
+
+.electricity-dashboard .intervention-toggle:hover {
+  background: rgba(231, 76, 60, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.2);
+}
+
+.electricity-dashboard .intervention-toggle.active {
+  background: #e74c3c;
+  color: white;
+  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+}
+
+.electricity-dashboard .intervention-toggle.active:hover {
+  background: #c0392b;
+}
+
+/* Responsive adjustments for intervention toggles */
+@media (max-height: 800px) {
+  .electricity-dashboard .intervention-toggle {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .electricity-dashboard .intervention-toggles {
+    gap: 4px;
+  }
+}
+
+/* Make toggle text more compact */
+.electricity-dashboard .intervention-toggle {
+  line-height: 1.2;
+}
+
+.slider-value {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.slider-value span {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.2rem;
+    background: #e74c3c;
+    padding: 0.4rem 1.2rem;
+    border-radius: 8px;
+    display: inline-block;
+    min-width: 4rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(231,76,60,0.2);
+}
+
+/* BAN positioning */
+.ban-total-electricity {
+    grid-area: ban-total-electricity;
+}
+
+.ban-carbon-emissions {
+    grid-area: ban-carbon-emissions;
+}
+
+.ban-cost {
+    grid-area: ban-cost;
+}
+
+.ban-renewable-share {
+    grid-area: ban-renewable-share;
+}
+
+.ban-electricity-per-student {
+    grid-area: ban-electricity-per-student;
+}
+
+.ban-peak-demand-reduction {
+    grid-area: ban-peak-demand-reduction;
+}
+
+/* Chart containers */
+.electricity-composition-container {
+    grid-area: electricity-composition;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(231,76,60,0.08);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.electricity-roi-container {
+    grid-area: electricity-roi;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(231,76,60,0.08);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.electricity-scenario-container {
+    grid-area: electricity-scenario;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(231,76,60,0.08);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .electricity-dashboard {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-areas: 
+            "title title title title title title title title"
+            "controls controls controls ban-total-electricity ban-total-electricity ban-carbon-emissions ban-carbon-emissions ban-cost"
+            "controls controls controls ban-renewable-share ban-renewable-share ban-electricity-per-student ban-electricity-per-student ban-peak-demand-reduction"
+            "electricity-composition electricity-composition electricity-roi electricity-roi electricity-roi electricity-scenario electricity-scenario electricity-scenario";
+    }
+}
+
+@media (max-width: 1200px) {
+    .electricity-dashboard {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr) minmax(250px, 2fr);
+        grid-template-areas: 
+            "title title title title title title"
+            "controls controls controls ban-total-electricity ban-carbon-emissions ban-cost"
+            "controls controls controls ban-renewable-share ban-electricity-per-student ban-peak-demand-reduction"
+            "electricity-composition electricity-composition electricity-roi electricity-roi electricity-scenario electricity-scenario"
+            "electricity-composition electricity-composition electricity-roi electricity-roi electricity-scenario electricity-scenario";
+    }
+}
+
+@media (max-width: 900px) {
+    .electricity-dashboard {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto repeat(6, minmax(80px, 1fr)) minmax(200px, 1.5fr);
+        grid-template-areas: 
+            "title title title title"
+            "controls controls controls controls"
+            "ban-total-electricity ban-total-electricity ban-carbon-emissions ban-carbon-emissions"
+            "ban-cost ban-cost ban-renewable-share ban-renewable-share"
+            "ban-electricity-per-student ban-electricity-per-student ban-peak-demand-reduction ban-peak-demand-reduction"
+            "electricity-composition electricity-composition electricity-composition electricity-composition"
+            "electricity-roi electricity-roi electricity-roi electricity-roi"
+            "electricity-scenario electricity-scenario electricity-scenario electricity-scenario";
+    }
+    
+    .electricity-dashboard-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .electricity-dashboard {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto repeat(8, minmax(70px, 1fr)) repeat(3, minmax(180px, 1fr));
+        grid-template-areas: 
+            "title title"
+            "controls controls"
+            "ban-total-electricity ban-carbon-emissions"
+            "ban-cost ban-renewable-share"
+            "ban-electricity-per-student ban-peak-demand-reduction"
+            "electricity-composition electricity-composition"
+            "electricity-roi electricity-roi"
+            "electricity-scenario electricity-scenario";
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .electricity-dashboard-title {
+        font-size: 1.5rem;
+    }
+}
