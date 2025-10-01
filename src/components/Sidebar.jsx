@@ -17,7 +17,7 @@ const dashboards = [
     },
     {
         key: 'finance',
-        label: 'Financial',
+        label: 'Budget',
         icon: FaMoneyBillWave,
         color: '#00b894', // teal
     },
