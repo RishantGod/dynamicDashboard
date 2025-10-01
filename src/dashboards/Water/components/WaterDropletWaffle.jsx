@@ -153,52 +153,12 @@ function WaterDropletWaffle({ percentage, size = 120, animate = true }) {
       enteringDroplets.attr('opacity', 1);
     }
 
-    // Smooth transition for droplets that change state
+    // Instant update for droplets that change state
     if (currentFilledCount !== prevFilledCount) {
-      // Determine which droplets need to change
-      const minCount = Math.min(currentFilledCount, prevFilledCount);
-      const maxCount = Math.max(currentFilledCount, prevFilledCount);
-      
-      // Animate droplets that are changing state
-      for (let i = minCount; i < maxCount; i++) {
-        const droplet = allDroplets.filter((d, index) => index === i);
-        
-        if (currentFilledCount > prevFilledCount) {
-          // Filling droplets (empty to filled)
-          droplet
-            .transition()
-            .duration(400)
-            .delay((i - minCount) * 80)
-            .ease(d3.easeBackOut.overshoot(1.1))
-            .attr('transform', function(d) {
-              return `translate(${d.x}, ${d.y}) scale(1.15) translate(${-d.x}, ${-d.y})`;
-            })
-            .transition()
-            .duration(300)
-            .attr('fill', 'url(#filledDropletGradient)')
-            .attr('stroke', '#2980b9')
-            .attr('transform', function(d) {
-              return `translate(${d.x}, ${d.y}) scale(1) translate(${-d.x}, ${-d.y})`;
-            });
-        } else {
-          // Emptying droplets (filled to empty)
-          droplet
-            .transition()
-            .duration(300)
-            .delay((i - minCount) * 60)
-            .ease(d3.easeBackIn)
-            .attr('transform', function(d) {
-              return `translate(${d.x}, ${d.y}) scale(0.85) translate(${-d.x}, ${-d.y})`;
-            })
-            .transition()
-            .duration(400)
-            .attr('fill', 'url(#emptyDropletGradient)')
-            .attr('stroke', '#bdc3c7')
-            .attr('transform', function(d) {
-              return `translate(${d.x}, ${d.y}) scale(1) translate(${-d.x}, ${-d.y})`;
-            });
-        }
-      }
+      // Update all droplets immediately based on their current state
+      allDroplets
+        .attr('fill', d => d.isFilled ? 'url(#filledDropletGradient)' : 'url(#emptyDropletGradient)')
+        .attr('stroke', d => d.isFilled ? '#2980b9' : '#bdc3c7');
     }
 
     // Add hover effects to all droplets

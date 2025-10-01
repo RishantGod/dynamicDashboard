@@ -150,7 +150,7 @@
     background: #f9ca24 !important;
     padding: 0.4rem 1.2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(249,202,36,0.2);
+    box-shadow: none;
 }
 
 /* Individual BAN grid areas */

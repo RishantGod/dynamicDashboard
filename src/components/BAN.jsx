@@ -10,9 +10,9 @@ function BAN({ value, icon, label, color = '#8884d8', percent = 0, className = '
   return (
     <div className={className} style={{
       background: '#fff',
-      borderRadius: 22,
-      boxShadow: '0 2px 16px rgba(136,132,216,0.12)',
-      padding: '1.8rem 1.5rem 1.2rem 1.5rem',
+      borderRadius: 16,
+      boxShadow: '0 2px 12px rgba(136,132,216,0.1)',
+      padding: '1.2rem 1rem 0.8rem 1rem',
       width: '100%',
       height: '100%',
       display: 'flex',
@@ -20,10 +20,10 @@ function BAN({ value, icon, label, color = '#8884d8', percent = 0, className = '
       alignItems: 'center',
       justifyContent: 'space-between',
     }}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 8 }}>
-        <div style={{ fontSize: 28, marginBottom: 4 }}>{icon}</div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 6 }}>
+        <div style={{ fontSize: 24, marginBottom: 3 }}>{icon}</div>
         <div style={{
-          fontSize: 32,
+          fontSize: 26,
           fontWeight: 700,
           color,
           maxWidth: 400,
@@ -39,7 +39,7 @@ function BAN({ value, icon, label, color = '#8884d8', percent = 0, className = '
           </span> : null}
         </div>
       </div>
-      <div style={{ fontSize: 14, color: '#888', textAlign: 'center', fontWeight: 500, marginBottom: 8 }}>{label}</div>
+      <div style={{ fontSize: 12, color: '#888', textAlign: 'center', fontWeight: 500, marginBottom: 6 }}>{label}</div>
       <div style={{
         fontSize: 14,
         fontWeight: 600,

@@ -27,30 +27,32 @@
 .water-controls {
     grid-area: controls;
     background: #fff;
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: 0 2px 8px rgba(52,152,219,0.08);
-    padding: 1rem;
+    padding: 0.8rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.6rem;
     overflow: hidden;
+    max-height: 100%;
 }
 
 .water-dashboard .control-group {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.2rem;
 }
 
 .water-dashboard .control-group:last-child {
     flex: 1;
-    min-height: 0;
+    min-height: 60px;
+    max-height: 100px;
 }
 
 .water-dashboard .control-group label {
     font-weight: 600;
     color: #3498db;
-    font-size: 1rem;
+    font-size: 0.85rem;
 }
 
 .water-dashboard .control-group input[type="range"] {
@@ -149,26 +151,27 @@
 .water-dashboard .intervention-toggles {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-  max-height: 120px;
+  gap: 4px;
+  margin-top: 6px;
+  max-height: 60px;
   overflow-y: auto;
 }
 
 .water-dashboard .intervention-toggle {
-  padding: 6px 10px;
-  border: 2px solid #3498db;
+  padding: 3px 6px;
+  border: 1px solid #3498db;
   background: transparent;
   color: #3498db;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   white-space: nowrap;
   flex: 0 1 auto;
   min-width: 0;
   text-align: center;
+  line-height: 1.2;
 }
 
 .water-dashboard .intervention-toggle:hover {
@@ -213,10 +216,10 @@
     font-weight: 700;
     color: #fff;
     font-size: 1.2rem;
-    background: #3498db;
+    background: transparent;
     padding: 0.4rem 1.2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(52,152,219,0.2);
+    box-shadow: none;
 }
 
 /* Individual BAN grid areas */
@@ -367,6 +370,8 @@
     color: #3498db;
     margin-right: 1rem;
     flex-shrink: 0;
+    width: 65px;
+    text-align: right;
 }
 
 .water-waffle-ban .waffle-container {
@@ -388,5 +393,94 @@
         margin-right: 0;
         margin-bottom: 0.25rem;
         font-size: 1.6rem;
+        width: auto;
+        text-align: center;
+    }
+}
+
+/* Water Pipe BAN Styling */
+.water-pipe-ban {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 120px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.water-pipe-ban:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(52,152,219,0.12);
+}
+
+.water-pipe-ban .ban-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.water-pipe-ban .ban-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(52,152,219,0.1);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.water-pipe-ban .ban-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 1.2;
+    flex: 1;
+}
+
+.water-pipe-ban .ban-content-pipe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex: 1;
+    gap: 0.75rem;
+}
+
+.water-pipe-ban .ban-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #3498db;
+    flex-shrink: 0;
+    min-width: 80px;
+    text-align: right;
+}
+
+.water-pipe-ban .pipe-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+/* Responsive adjustments for pipe BAN */
+@media (max-width: 1200px) {
+    .water-pipe-ban .ban-content-pipe {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    
+    .water-pipe-ban .ban-value {
+        margin-bottom: 0.25rem;
+        font-size: 1.2rem;
+        min-width: auto;
+        text-align: center;
     }
 }

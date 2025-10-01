@@ -1,0 +1,295 @@
+/* Business Travel Dashboard Styles */
+
+.business-travel-dashboard {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* 9 columns total */
+  grid-template-rows: auto minmax(120px, 1fr) minmax(120px, 1fr) minmax(450px, 3fr); /* auto height for title */
+  grid-template-areas: 
+    "title title title title title title title title title"
+    "controls controls controls ban1 ban1 ban2 ban2 ban3 ban3"
+    "controls controls controls ban4 ban4 ban5 ban5 ban6 ban6"
+    "map map map map map donut donut donut donut";
+  gap: 1rem;
+  padding: 1.2rem;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+
+.business-travel-dashboard-title {
+  grid-area: title;
+  text-align: center;
+  color: #2c3e50;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 0;
+  padding-bottom: 0.7rem;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.business-travel-controls {
+  grid-area: controls;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  height: fit-content;
+  max-height: 350px;
+  max-width: 580px;
+}
+
+.control-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.control-group label {
+  font-weight: 600;
+  color: #e74c3c;
+  font-size: 0.75rem;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.slider-value {
+  text-align: center;
+  font-weight: bold;
+  color: #fff !important;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.slider-value span {
+  color: #fff !important;
+  background-color: #e74c3c !important;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+
+.slider-value-text {
+  color: #fff !important;
+  font-weight: bold;
+  background-color: #e74c3c !important;
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+}
+
+.business-travel-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #e74c3c;
+  outline: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.business-travel-slider:hover {
+  opacity: 1;
+}
+
+.business-travel-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e74c3c;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.business-travel-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e74c3c;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-top: 0.25rem;
+}
+
+.slider-description {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* BAN positioning */
+/* BAN Grid Area Assignments */
+.ban1 {
+  grid-area: ban1;
+}
+
+.ban2 {
+  grid-area: ban2;
+}
+
+.ban3 {
+  grid-area: ban3;
+}
+
+.ban4 {
+  grid-area: ban4;
+}
+
+.ban5 {
+  grid-area: ban5;
+}
+
+.ban6 {
+  grid-area: ban6;
+}
+
+/* Legacy BAN class names (keep for compatibility) */
+.ban-total-emissions {
+  grid-area: ban1;
+}
+
+.ban-virtualized-travel {
+  grid-area: ban2;
+}
+
+.ban-air-travel-reduction {
+  grid-area: ban3;
+}
+
+.ban-hotel-nights {
+  grid-area: ban4;
+}
+
+.ban-total-distance {
+  grid-area: ban5;
+}
+
+.ban-lower-emission-travel {
+  grid-area: ban6;
+}
+
+
+
+.business-travel-map-container {
+  grid-area: map;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.business-travel-donut-container {
+  grid-area: donut;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  padding: 1.5rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.business-travel-bar-container {
+  grid-area: bar;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  padding: 1.5rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .business-travel-dashboard {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 200px repeat(2, 180px) 450px;
+    grid-template-areas: 
+      "title title title"
+      "controls controls controls"
+      "ban1 ban2 ban3"
+      "ban4 ban5 ban6"
+      "map donut donut";
+  }
+}
+
+@media (max-width: 768px) {
+  .business-travel-dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 220px repeat(6, 160px) repeat(2, 400px);
+    grid-template-areas: 
+      "title"
+      "controls"
+      "ban1"
+      "ban2"
+      "ban3"
+      "ban4"
+      "ban5"
+      "ban6"
+      "map"
+      "donut";
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .business-travel-map-container {
+    height: 450px;
+  }
+
+  .business-travel-controls {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .business-travel-dashboard-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-travel-dashboard {
+    padding: 0.75rem;
+  }
+
+  .business-travel-dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .business-travel-controls {
+    padding: 1rem;
+  }
+}

@@ -236,6 +236,7 @@ function ElectricityDashboard() {
           totalElectricity={totalElectricityUse}
           enabledInterventions={enabledInterventions}
           interventionFunding={interventionFunding}
+          campusFootfall={campusFootfall}
         />
       </div>
       

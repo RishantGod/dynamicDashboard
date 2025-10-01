@@ -11,7 +11,7 @@ const dashboards = [
     },
     {
         key: 'student',
-        label: 'Student Population',
+        label: 'Population',
         icon: FaUserGraduate,
         color: '#8884d8', // purple
     },
@@ -29,25 +29,25 @@ const dashboards = [
     },
     {
         key: 'waste',
-        label: 'Waste Management',
+        label: 'Waste',
         icon: FaRecycle,
         color: '#27ae60', // green
     },
     {
         key: 'water',
-        label: 'Water Management',
+        label: 'Water',
         icon: FaTint,
         color: '#3498db', // light blue
     },
     {
         key: 'electricity',
-        label: 'Electricity Management',
+        label: 'Electricity',
         icon: FaBolt,
         color: '#e74c3c', // orange power
     },
     {
         key: 'naturalgas',
-        label: 'Natural Gas & Heating',
+        label: 'Natural Gas',
         icon: FaFire,
         color: '#17a2b8', // deep teal
     },

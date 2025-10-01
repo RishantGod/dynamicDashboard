@@ -5,6 +5,7 @@ import WaterUseChart from './components/WaterUseChart';
 import WaterROIChart from './components/WaterROIChart';
 import WaterScenarioChart from './components/WaterScenarioChart';
 import WaterDropletWaffle from './components/WaterDropletWaffle';
+import WaterTank from './components/WaterPipe';
 import { FaTint, FaRecycle, FaLeaf, FaEuroSign, FaBullseye, FaWater } from 'react-icons/fa';
 
 function WaterDashboard() {
@@ -45,7 +46,7 @@ function WaterDashboard() {
   let totalWaterReduction = 0;
   Object.keys(enabledInterventions).forEach(intervention => {
     if (enabledInterventions[intervention] && waterReductionFactors[intervention]) {
-      totalWaterReduction += waterReductionFactors[intervention] * (interventionFunding / 100);
+      // totalWaterReduction += waterReductionFactors[intervention] * (interventionFunding / 100);
     }
   });
   
@@ -202,23 +203,49 @@ function WaterDashboard() {
         </div>
       </div>
       
-      <BAN
-        className="ban-total-water"
-        value={totalWaterUse.toLocaleString()}
-        icon={<FaTint size={32} color="#3498db" />}
-        label="Total Water Use (m³/year)"
-        color="#3498db"
-        percent={0}
-      />
+      <div className="ban-total-water water-pipe-ban">
+        <div className="ban-header">
+          <div className="ban-icon">
+            <FaTint size={32} color="#3498db" />
+          </div>
+          <div className="ban-label">Total Water Use (m³/year)</div>
+        </div>
+        <div className="ban-content-pipe">
+          <div className="ban-value">{totalWaterUse.toLocaleString()}</div>
+          <div className="pipe-container">
+            <WaterTank 
+              value={totalWaterUse} 
+              maxValue={600000}
+              waterType="clean"
+              width={90} 
+              height={80}
+              animate={true}
+            />
+          </div>
+        </div>
+      </div>
       
-      <BAN
-        className="ban-wastewater"
-        value={wastewaterVolume.toLocaleString()}
-        icon={<FaWater size={32} color="#3498db" />}
-        label="Wastewater Volume (m³/year)"
-        color="#3498db"
-        percent={0}
-      />
+      <div className="ban-wastewater water-pipe-ban">
+        <div className="ban-header">
+          <div className="ban-icon">
+            <FaWater size={32} color="#3498db" />
+          </div>
+          <div className="ban-label">Wastewater Volume (m³/year)</div>
+        </div>
+        <div className="ban-content-pipe">
+          <div className="ban-value">{wastewaterVolume.toLocaleString()}</div>
+          <div className="pipe-container">
+            <WaterTank 
+              value={wastewaterVolume} 
+              maxValue={500000}
+              waterType="waste"
+              width={90} 
+              height={80}
+              animate={true}
+            />
+          </div>
+        </div>
+      </div>
       
       <BAN
         className="ban-carbon-emissions"

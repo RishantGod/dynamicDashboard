@@ -6,6 +6,8 @@ import WasteDashboard from './dashboards/Waste/WasteDashboard';
 import WaterDashboard from './dashboards/Water/WaterDashboard';
 import ElectricityDashboard from './dashboards/Electricity/ElectricityDashboard';
 import NaturalGasDashboard from './dashboards/NaturalGas/NaturalGasDashboard';
+import BusinessTravelDashboard from './dashboards/BusinessTravel/BusinessTravelDashboard';
+import FinancialDashboard from './dashboards/Financial/FinancialDashboard';
 import Sidebar from './components/Sidebar';
 
 function App() {
@@ -34,9 +36,11 @@ function App() {
         return <ElectricityDashboard />;
       case 'naturalgas':
         return <NaturalGasDashboard />;
-      case 'main':
-      case 'finance':
       case 'travel':
+        return <BusinessTravelDashboard />;
+      case 'finance':
+        return <FinancialDashboard />;
+      case 'main':
       default:
         return (
           <div style={{ 
