@@ -88,10 +88,19 @@ function FinancialDashboard() {
 
   const renderInterventionControls = () => {
     if (selectedCategory === 'water') {
+      const categoryTotal = Object.values(waterInterventions).reduce((sum, val) => sum + (val || 0), 0);
+      const categoryPercentage = totalBudget > 0 ? (categoryTotal / totalBudget) * 100 : 0;
+      
       return (
         <div className="intervention-controls">
           <h3 className="category-title">
-            <FaWater /> Water Conservation Interventions
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <FaWater /> Water Conservation Interventions
+            </span>
+            <span className="category-budget-percentage">
+              <span className="percentage-icon">💰</span>
+              {categoryPercentage.toFixed(1)}% of budget
+            </span>
           </h3>
           <div className="intervention-sliders">
             {/* Rainwater Harvesting */}
@@ -214,10 +223,19 @@ function FinancialDashboard() {
     }
     
     if (selectedCategory === 'waste') {
+      const categoryTotal = Object.values(wasteInterventions).reduce((sum, val) => sum + (val || 0), 0);
+      const categoryPercentage = totalBudget > 0 ? (categoryTotal / totalBudget) * 100 : 0;
+      
       return (
         <div className="intervention-controls">
           <h3 className="category-title">
-            <FaRecycle /> Waste Management Interventions
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <FaRecycle /> Waste Management Interventions
+            </span>
+            <span className="category-budget-percentage">
+              <span className="percentage-icon">💰</span>
+              {categoryPercentage.toFixed(1)}% of budget
+            </span>
           </h3>
           <div className="intervention-sliders">
             {/* Composting Systems */}
@@ -340,10 +358,19 @@ function FinancialDashboard() {
     }
     
     if (selectedCategory === 'electricity') {
+      const categoryTotal = Object.values(electricityInterventions).reduce((sum, val) => sum + (val || 0), 0);
+      const categoryPercentage = totalBudget > 0 ? (categoryTotal / totalBudget) * 100 : 0;
+      
       return (
         <div className="intervention-controls">
           <h3 className="category-title">
-            <FaBolt /> Electricity Interventions
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <FaBolt /> Electricity Interventions
+            </span>
+            <span className="category-budget-percentage">
+              <span className="percentage-icon">💰</span>
+              {categoryPercentage.toFixed(1)}% of budget
+            </span>
           </h3>
           <div className="intervention-sliders">
             {/* Solar Panels */}
@@ -489,10 +516,19 @@ function FinancialDashboard() {
     }
 
     if (selectedCategory === 'naturalgas') {
+      const categoryTotal = Object.values(gasInterventions).reduce((sum, val) => sum + (val || 0), 0);
+      const categoryPercentage = totalBudget > 0 ? (categoryTotal / totalBudget) * 100 : 0;
+      
       return (
         <div className="intervention-controls">
           <h3 className="category-title">
-            <FaFire /> Natural Gas Interventions
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <FaFire /> Natural Gas Interventions
+            </span>
+            <span className="category-budget-percentage">
+              <span className="percentage-icon">💰</span>
+              {categoryPercentage.toFixed(1)}% of budget
+            </span>
           </h3>
           <div className="intervention-sliders">
             {/* Heat Pumps */}
@@ -615,10 +651,19 @@ function FinancialDashboard() {
     }
 
     if (selectedCategory === 'business-travel') {
+      const categoryTotal = Object.values(travelInterventions).reduce((sum, val) => sum + (val || 0), 0);
+      const categoryPercentage = totalBudget > 0 ? (categoryTotal / totalBudget) * 100 : 0;
+      
       return (
         <div className="intervention-controls">
           <h3 className="category-title">
-            <FaLeaf /> Business Travel Interventions
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <FaLeaf /> Business Travel Interventions
+            </span>
+            <span className="category-budget-percentage">
+              <span className="percentage-icon">💰</span>
+              {categoryPercentage.toFixed(1)}% of budget
+            </span>
           </h3>
           <div className="intervention-sliders">
             {/* Electric Vehicles */}
@@ -911,6 +956,102 @@ function FinancialDashboard() {
         label="Carbon Reduction (yearly)" 
         color="#00b894"
       />
+
+      {/* Budget Distribution Chart */}
+      <div className="budget-distribution-chart">
+        <h3><FaChartLine /> Budget by Category</h3>
+        <div className="chart-bars">
+          <div className="chart-bar-item">
+            <div className="chart-bar-header">
+              <span className="chart-bar-label">
+                <FaWater style={{ fontSize: '0.65rem', color: '#3498db' }} /> Water
+              </span>
+              <span className="chart-bar-value">
+                {totalBudget > 0 ? ((Object.values(waterInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100).toFixed(1) : 0}%
+              </span>
+            </div>
+            <div className="chart-bar-track">
+              <div 
+                className="chart-bar-fill water"
+                style={{ width: `${totalBudget > 0 ? ((Object.values(waterInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100) : 0}%` }}
+              >
+              </div>
+            </div>
+          </div>
+
+          <div className="chart-bar-item">
+            <div className="chart-bar-header">
+              <span className="chart-bar-label">
+                <FaRecycle style={{ fontSize: '0.65rem', color: '#27ae60' }} /> Waste
+              </span>
+              <span className="chart-bar-value">
+                {totalBudget > 0 ? ((Object.values(wasteInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100).toFixed(1) : 0}%
+              </span>
+            </div>
+            <div className="chart-bar-track">
+              <div 
+                className="chart-bar-fill waste"
+                style={{ width: `${totalBudget > 0 ? ((Object.values(wasteInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100) : 0}%` }}
+              >
+              </div>
+            </div>
+          </div>
+
+          <div className="chart-bar-item">
+            <div className="chart-bar-header">
+              <span className="chart-bar-label">
+                <FaBolt style={{ fontSize: '0.65rem', color: '#f39c12' }} /> Electricity
+              </span>
+              <span className="chart-bar-value">
+                {totalBudget > 0 ? ((Object.values(electricityInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100).toFixed(1) : 0}%
+              </span>
+            </div>
+            <div className="chart-bar-track">
+              <div 
+                className="chart-bar-fill electricity"
+                style={{ width: `${totalBudget > 0 ? ((Object.values(electricityInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100) : 0}%` }}
+              >
+              </div>
+            </div>
+          </div>
+
+          <div className="chart-bar-item">
+            <div className="chart-bar-header">
+              <span className="chart-bar-label">
+                <FaFire style={{ fontSize: '0.65rem', color: '#e74c3c' }} /> Natural Gas
+              </span>
+              <span className="chart-bar-value">
+                {totalBudget > 0 ? ((Object.values(gasInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100).toFixed(1) : 0}%
+              </span>
+            </div>
+            <div className="chart-bar-track">
+              <div 
+                className="chart-bar-fill gas"
+                style={{ width: `${totalBudget > 0 ? ((Object.values(gasInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100) : 0}%` }}
+              >
+              </div>
+            </div>
+          </div>
+
+          <div className="chart-bar-item">
+            <div className="chart-bar-header">
+              <span className="chart-bar-label">
+                <FaLeaf style={{ fontSize: '0.65rem', color: '#00b894' }} /> Business Travel
+              </span>
+              <span className="chart-bar-value">
+                {totalBudget > 0 ? ((Object.values(travelInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100).toFixed(1) : 0}%
+              </span>
+            </div>
+            <div className="chart-bar-track">
+              <div 
+                className="chart-bar-fill travel"
+                style={{ width: `${totalBudget > 0 ? ((Object.values(travelInterventions).reduce((sum, val) => sum + (val || 0), 0) / totalBudget) * 100) : 0}%` }}
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
